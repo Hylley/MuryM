@@ -1,0 +1,7 @@
+{
+  "name": "Muryô",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
