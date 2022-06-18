@@ -1,5 +1,17 @@
 import React from 'react';
-import { IonApp, setupIonicReact, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon } from '@ionic/react';
+import {
+  IonApp,
+  setupIonicReact,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonIcon,
+  IonFooter,
+  IonLabel,
+  IonSegment,
+  IonSegmentButton
+} from '@ionic/react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -20,24 +32,32 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-import { calculatorOutline } from 'ionicons/icons';
+import {} from 'ionicons/icons';
 
 setupIonicReact();
 
-const App: React.FC = () => (
+const App: React.FC = () => {
+  return (
   <IonApp>
     <IonHeader>
-      <IonToolbar>
-        <IonTitle>
-          Teste
-        </IonTitle>
-      </IonToolbar>
+      <IonSegment color="primary" onIonChange={e => console.log('Segment selected', e.detail.value)}>
+        <IonSegmentButton value="friends">
+          <IonLabel>Friends</IonLabel>
+        </IonSegmentButton>
+        <IonSegmentButton value="enemies">
+          <IonLabel>Enemies</IonLabel>
+        </IonSegmentButton>
+      </IonSegment>
     </IonHeader>
 
     <IonContent>
-      <IonIcon icon={calculatorOutline} />
+      
     </IonContent>
+
+    <IonFooter>
+    </IonFooter>
   </IonApp>
-);
+  )
+};
 
 export default App;
