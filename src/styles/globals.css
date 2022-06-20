@@ -4,7 +4,8 @@
   box-sizing: border-box;
 }
 
-ion-content {
-  font-family: 'Montserrat', sans-serif;
-  background: #1c1c1c;
+html {
+  --ion-font-family: 'Montserrat', sans-serif;
+  --ion-background-color: #1c1c1c;
+  --ion-text-color: #fff;
 }
