@@ -1,4 +1,10 @@
-import { IonContent } from '@ionic/react'
+import {
+  IonContent,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonList,
+} from '@ionic/react'
+import { useState } from 'react'
 import { useMangaList } from '../hooks/useMangaList'
 import { MangaCard } from './MangaCard'
 
@@ -6,16 +12,19 @@ import './MangaList.css'
 
 export function MangaList() {
   const { error, isLoading, mangaList, fetchNext, hasMore } = useMangaList()
+  const [infiniteScrollDisabled, setInfiniteScrollDisabled] = useState(false)
 
-  function handleFetchNext() {
-    if (hasMore) fetchNext()
+  async function handleFetchNext(ev: any) {
+    if (!hasMore) setInfiniteScrollDisabled(true)
+
+    await fetchNext()
+    ev.target.complete()
   }
 
   return (
     <IonContent>
-      <div className='manga-list'>
-        {!isLoading &&
-          mangaList &&
+      <IonList className='manga-list'>
+        {mangaList &&
           mangaList.data.map(manga => {
             const coverArt = manga.relationships.find(
               relation => relation.type === 'cover_art'
@@ -32,8 +41,14 @@ export function MangaList() {
               />
             )
           })}
-        <button onClick={handleFetchNext}>fetch next</button>
-      </div>
+        <IonInfiniteScroll
+          onIonInfinite={ev => handleFetchNext(ev)}
+          threshold='60px'
+          disabled={infiniteScrollDisabled}
+        >
+          <IonInfiniteScrollContent loadingSpinner='bubbles'></IonInfiniteScrollContent>
+        </IonInfiniteScroll>
+      </IonList>
     </IonContent>
   )
 }

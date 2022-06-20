@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useIonViewWillEnter } from '@ionic/react'
+import { useRef, useState } from 'react'
 import { api } from '../services/api'
 import { MangaResponse } from '../types'
 
-const LIMIT = 20
+const LIMIT = 40
 
 export function useMangaList() {
   const [mangaList, setMangaList] = useState<MangaResponse>()
@@ -13,8 +14,6 @@ export function useMangaList() {
 
   async function fetchNext() {
     offset.current += LIMIT + 8 // <- por algum motivo a api sempre repete os ultimos 7 resultados, gambiarra pra arrumar <-
-
-    console.log(offset.current)
 
     const response = await api.get<MangaResponse>(
       '/manga?includes[]=cover_art',
@@ -36,9 +35,7 @@ export function useMangaList() {
     }
   }
 
-  useEffect(() => {
-    setIsLoading(true)
-
+  useIonViewWillEnter(() => {
     api
       .get<MangaResponse>('/manga?includes[]=cover_art', {
         params: {
@@ -48,7 +45,6 @@ export function useMangaList() {
       })
       .then(response => {
         setMangaList(response.data)
-        console.log(response.data.data.length)
       })
       .catch(error => setError(error))
       .finally(() => setIsLoading(false))
