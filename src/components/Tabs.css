@@ -1,0 +1,9 @@
+.tab-bar {
+  background-color: #1c1c1c;
+}
+
+.tab-bar__button {
+  --background: #1c1c1c;
+  --color-selected: #ad0513;
+  --color: white;
+}

@@ -1,7 +1,13 @@
 .manga-card {
   text-align: center;
+  color: white;
+  background: transparent;
 }
 
 .manga-card h2 {
   font-size: 1rem;
+}
+
+.manga-card a {
+  text-decoration: none;
 }

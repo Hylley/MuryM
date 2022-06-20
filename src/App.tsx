@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  IonApp,
-  setupIonicReact,
-  IonRouterOutlet,
-  IonFooter,
-  IonContent,
-  IonHeader,
-} from '@ionic/react'
+import { IonApp, setupIonicReact, IonContent } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { Route } from 'react-router-dom'
 
@@ -25,6 +18,8 @@ import '@ionic/react/css/typography.css'
 
 import { HomePage } from './pages'
 import { Header } from './components/Header'
+import { Tabs } from './components/Tabs'
+import { MangaPage } from './pages/manga'
 
 setupIonicReact()
 
@@ -34,12 +29,12 @@ const App: React.FC = () => {
       <Header />
       <IonContent>
         <IonReactRouter>
-          <IonRouterOutlet>
+          <Tabs>
             <Route path='/' component={HomePage} />
-          </IonRouterOutlet>
+            <Route path='/:mangaId' component={MangaPage} />
+          </Tabs>
         </IonReactRouter>
       </IonContent>
-      <IonFooter>sdadsa</IonFooter>
     </IonApp>
   )
 }

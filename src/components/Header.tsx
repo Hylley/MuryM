@@ -1,13 +1,13 @@
 import { IonHeader, IonIcon } from '@ionic/react'
-import { settingsOutline, personOutline } from 'ionicons/icons'
+import { settingsOutline, searchOutline } from 'ionicons/icons'
 
 import './Header.css'
 
 export function Header() {
   return (
-    <IonHeader className='header'>
+    <IonHeader className='header' collapse='condense'>
       <IonIcon icon={settingsOutline} className='icon' />
-      <IonIcon icon={personOutline} className='icon' />
+      <IonIcon icon={searchOutline} className='icon' />
     </IonHeader>
   )
 }

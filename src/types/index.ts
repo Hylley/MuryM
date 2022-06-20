@@ -7,6 +7,11 @@ export interface MangaResponse {
   total: number
 }
 
+export interface MangaDetailsResponse {
+  result: string
+  response: string
+  data: Data
+}
 export interface Data {
   id: string
   type: string
