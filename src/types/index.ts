@@ -89,4 +89,5 @@ export interface CoverArtAttributes {
   createdAt: string
   updatedAt: string
   version: number
+  name?: string
 }
