@@ -12,7 +12,7 @@ export function useMangaList() {
   const offset = useRef(0)
 
   async function fetchNext() {
-    offset.current += LIMIT + 7 // <- por algum motivo a api sempre repete os ultimos 7 resultados, gambiarra pra arrumar <-
+    offset.current += LIMIT + 8 // <- por algum motivo a api sempre repete os ultimos 7 resultados, gambiarra pra arrumar <-
 
     console.log(offset.current)
 
