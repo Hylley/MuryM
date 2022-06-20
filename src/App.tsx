@@ -1,5 +1,12 @@
 import React from 'react'
-import { IonApp, setupIonicReact, IonRouterOutlet } from '@ionic/react'
+import {
+  IonApp,
+  setupIonicReact,
+  IonRouterOutlet,
+  IonFooter,
+  IonContent,
+  IonHeader,
+} from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
 import { Route } from 'react-router-dom'
 
@@ -12,28 +19,27 @@ import '@ionic/react/css/structure.css'
 import '@ionic/react/css/typography.css'
 
 /* Optional CSS utils that can be commented out */
-import '@ionic/react/css/padding.css'
-import '@ionic/react/css/float-elements.css'
-import '@ionic/react/css/text-alignment.css'
-import '@ionic/react/css/text-transformation.css'
-import '@ionic/react/css/flex-utils.css'
-import '@ionic/react/css/display.css'
 
 /* Theme variables */
 // import './theme/variables.css'
 
 import { HomePage } from './pages'
+import { Header } from './components/Header'
 
 setupIonicReact()
 
 const App: React.FC = () => {
   return (
     <IonApp>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route path='/' component={HomePage} />
-        </IonRouterOutlet>
-      </IonReactRouter>
+      <Header />
+      <IonContent>
+        <IonReactRouter>
+          <IonRouterOutlet>
+            <Route path='/' component={HomePage} />
+          </IonRouterOutlet>
+        </IonReactRouter>
+      </IonContent>
+      <IonFooter>sdadsa</IonFooter>
     </IonApp>
   )
 }
