@@ -1,4 +1,4 @@
-import { IonContent, IonList, IonPage, useIonViewWillEnter } from '@ionic/react'
+import { IonContent, IonList, IonPage, IonSpinner, useIonViewWillEnter } from '@ionic/react'
 import { useState } from 'react'
 import { useParams } from 'react-router'
 import { api } from '../services/api'
@@ -63,7 +63,7 @@ export function MangaPage() {
   return (
     <IonPage>
       <IonContent>
-        <div className='manga-page'>
+        {manga?.attributes.title.en ? <div className='manga-page'>
           <header className='manga-page__header'>
             <img
               src={additionalInfo?.coverArtUrl}
@@ -101,7 +101,7 @@ export function MangaPage() {
               )
             })}
           </IonList>
-        </div>
+        </div> : <IonSpinner name="crescent" class="absolute-center" />}
       </IonContent>
     </IonPage>
   )

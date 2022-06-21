@@ -9,7 +9,7 @@ import {
   IonContent,
 } from '@ionic/react'
 
-import { homeOutline, bookmarkOutline, podiumOutline } from 'ionicons/icons'
+import { homeOutline, bookmarkOutline, podiumOutline, cloudDownloadOutline } from 'ionicons/icons'
 import { ReactNode } from 'react'
 
 import './Tabs.css'
@@ -25,10 +25,16 @@ export function Tabs({ children }: TabsProps) {
         <IonRouterOutlet>
           <IonContent>{children}</IonContent>
         </IonRouterOutlet>
+
         <IonTabBar slot='bottom' className='tab-bar'>
           <IonTabButton tab='home' href='/' className='tab-bar__button'>
             <IonIcon icon={homeOutline} />
           </IonTabButton>
+
+          <IonTabButton tab='list' href='/list' className='tab-bar__button'>
+            <IonIcon icon={bookmarkOutline} />
+          </IonTabButton>
+
           <IonTabButton
             tab='popular'
             href='/popular'
@@ -36,8 +42,9 @@ export function Tabs({ children }: TabsProps) {
           >
             <IonIcon icon={podiumOutline} />
           </IonTabButton>
-          <IonTabButton tab='saved' href='/saved' className='tab-bar__button'>
-            <IonIcon icon={bookmarkOutline} />
+
+          <IonTabButton tab='downloads' href='/downloads' className='tab-bar__button'>
+            <IonIcon icon={cloudDownloadOutline} />
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
