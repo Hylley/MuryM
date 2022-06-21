@@ -1,4 +1,10 @@
-import { IonContent, IonList, IonPage, IonSpinner, useIonViewWillEnter } from '@ionic/react'
+import {
+  IonContent,
+  IonList,
+  IonPage,
+  IonSpinner,
+  useIonViewWillEnter,
+} from '@ionic/react'
 import { useState } from 'react'
 import { useParams } from 'react-router'
 import { api } from '../services/api'
@@ -48,7 +54,9 @@ export function MangaPage() {
     if (!params) return
 
     api
-      .get<ChapterListResponse>(`/manga/${params.mangaId}/feed`)
+      .get<ChapterListResponse>(
+        `/manga/${params.mangaId}/feed?translatedLanguage[]=pt-br`
+      )
       .then(response => {
         const sorted = response.data.data.sort((a, b) => {
           return Number(a.attributes.chapter) - Number(b.attributes.chapter)
@@ -58,49 +66,56 @@ export function MangaPage() {
       })
   }, [params.mangaId])
 
-  console.log(manga)
+  console.log(chapterList)
 
   return (
     <IonPage>
       <IonContent>
-        {manga?.attributes.title.en ? <div className='manga-page'>
-          <header className='manga-page__header'>
-            <img
-              src={additionalInfo?.coverArtUrl}
-              alt={manga?.attributes.title.en}
-            />
-            <h1>{manga?.attributes.title.en}</h1>
-          </header>
-          <p>{manga?.attributes.description.en}</p>
+        {manga?.attributes.title.en ? (
+          <div className='manga-page'>
+            <header className='manga-page__header'>
+              <img
+                src={additionalInfo?.coverArtUrl}
+                alt={manga?.attributes.title.en}
+              />
+              <h1>{manga?.attributes.title.en}</h1>
+            </header>
+            <p>{manga?.attributes.description.en}</p>
 
-          <div className='info'>
-            <span>Status:</span> {manga?.attributes.status}
+            <div className='info'>
+              <span>Status:</span> {manga?.attributes.status}
+            </div>
+            <div className='info'>
+              <span>State:</span> {manga?.attributes.state}
+            </div>
+            <div className='info'>
+              <span>Author:</span> {additionalInfo?.author}
+            </div>
+            <IonList className='tags'>
+              {manga?.attributes.tags.map(tag => {
+                return (
+                  <span className='tag' key={tag.id}>
+                    {tag.attributes.name.en}
+                  </span>
+                )
+              })}
+            </IonList>
+            <IonList className='chapter-list'>
+              {chapterList?.map(chapter => {
+                return (
+                  <a key={chapter.id} className='chapter-list__item'>
+                    <h2>
+                      {chapter.attributes.title || chapter.attributes.chapter}
+                    </h2>
+                    <span>#{chapter.attributes.chapter}</span>
+                  </a>
+                )
+              })}
+            </IonList>
           </div>
-          <div className='info'>
-            <span>State:</span> {manga?.attributes.state}
-          </div>
-          <div className='info'>
-            <span>Author:</span> {additionalInfo?.author}
-          </div>
-          <IonList className='tags'>
-            {manga?.attributes.tags.map(tag => {
-              return (
-                <span className='tag' key={tag.id}>
-                  {tag.attributes.name.en}
-                </span>
-              )
-            })}
-          </IonList>
-          <IonList className='chapter-list'>
-            {chapterList?.map(chapter => {
-              return (
-                <a key={chapter.id} className='chapter-list__item'>
-                  <h2>{chapter.attributes.chapter}</h2>
-                </a>
-              )
-            })}
-          </IonList>
-        </div> : <IonSpinner name="crescent" class="absolute-center" />}
+        ) : (
+          <IonSpinner name='crescent' class='absolute-center' />
+        )}
       </IonContent>
     </IonPage>
   )

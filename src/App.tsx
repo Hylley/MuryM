@@ -31,7 +31,7 @@ const App: React.FC = () => {
         <IonReactRouter>
           <Tabs>
             <Route path='/' component={HomePage} />
-            <Route path='/:mangaId' component={MangaPage} />
+            <Route path='/m/:mangaId' component={MangaPage} />
           </Tabs>
         </IonReactRouter>
       </IonContent>
