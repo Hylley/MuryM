@@ -2,6 +2,7 @@
   text-align: center;
   color: white;
   background: transparent;
+  box-shadow: none !important;
 }
 
 .manga-card h2 {

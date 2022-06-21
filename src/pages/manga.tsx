@@ -96,7 +96,6 @@ export function MangaPage() {
               return (
                 <a key={chapter.id} className='chapter-list__item'>
                   <h2>{chapter.attributes.chapter}</h2>
-                  <span>{chapter.attributes.createdAt}</span>
                 </a>
               )
             })}

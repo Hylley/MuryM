@@ -1,9 +1,10 @@
 .tab-bar {
-  background-color: #1c1c1c;
+  background-color: #0c0c0c;
 }
 
 .tab-bar__button {
-  --background: #1c1c1c;
-  --color-selected: #ad0513;
-  --color: white;
+  --background: #0c0c0c;
+  --color-focused: #ffffff;
+  --color-selected: #ffffff;
+  --color: rgb(255, 255, 255, 0.5);
 }
