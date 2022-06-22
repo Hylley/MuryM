@@ -9,9 +9,10 @@ type MangaCardProps = {
 
 export function MangaCard({ id, src, title }: MangaCardProps) {
   return (
-    <IonCard className='manga-card' routerLink={`/m/${id}`}>
+    <IonCard class='manga-card ion-text-wrap' routerLink={`/m/${id}`}>
       <img src={src} alt={title} className='manga-list__img' loading='lazy'/>
       <h2>{title}</h2>
+      <br/>
     </IonCard>
   )
 }

@@ -2,6 +2,7 @@ import { IonPage } from '@ionic/react'
 import { useState } from 'react'
 import { MangaList } from '../components/MangaList'
 import { useMangaList } from '../hooks/useMangaList'
+import { Header } from '../components/Header'
 
 export function HomePage() {
   const { mangaList, fetchNext, hasMore } = useMangaList()
@@ -16,6 +17,7 @@ export function HomePage() {
 
   return (
     <IonPage>
+      <Header />
       <MangaList
         infiniteScrollDisabled={infiniteScrollDisabled}
         mangaList={mangaList}
