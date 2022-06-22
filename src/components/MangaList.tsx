@@ -3,25 +3,26 @@ import {
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonList,
-  IonVirtualScroll,
 } from '@ionic/react'
-import { useState } from 'react'
-import { useMangaList } from '../hooks/useMangaList'
+
+import { MangaResponse } from '../types'
 import { MangaCard } from './MangaCard'
 
 import './MangaList.css'
 
-export function MangaList() {
-  const { error, isLoading, mangaList, fetchNext, hasMore } = useMangaList()
-  const [infiniteScrollDisabled, setInfiniteScrollDisabled] = useState(false)
+type MangaListProps = {
+  onFetchNext: (ev: any) => Promise<void>
+  threshold: string
+  infiniteScrollDisabled: boolean
+  mangaList?: MangaResponse
+}
 
-  async function handleFetchNext(ev: any) {
-    if (!hasMore) setInfiniteScrollDisabled(true)
-
-    await fetchNext()
-    ev.target.complete()
-  }
-
+export function MangaList({
+  infiniteScrollDisabled,
+  onFetchNext,
+  threshold,
+  mangaList,
+}: MangaListProps) {
   return (
     <IonContent>
       <IonList className='manga-list'>
@@ -43,8 +44,8 @@ export function MangaList() {
             )
           })}
         <IonInfiniteScroll
-          onIonInfinite={ev => handleFetchNext(ev)}
-          threshold='60px'
+          onIonInfinite={onFetchNext}
+          threshold={threshold}
           disabled={infiniteScrollDisabled}
         >
           <IonInfiniteScrollContent loadingSpinner='bubbles'></IonInfiniteScrollContent>
