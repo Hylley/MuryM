@@ -3,6 +3,7 @@ import {
   IonInfiniteScroll,
   IonInfiniteScrollContent,
   IonList,
+  IonVirtualScroll,
 } from '@ionic/react'
 import { useState } from 'react'
 import { useMangaList } from '../hooks/useMangaList'
