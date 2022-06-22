@@ -74,7 +74,11 @@ export function MangaPage() {
         {manga?.attributes.title.en ? (
           <div className='manga-page'>
             <header className='manga-page__header'>
-              <img
+              <img className = 'manga-cover-banner'
+                src={additionalInfo?.coverArtUrl}
+                alt={manga?.attributes.title.en}
+              />
+              <img className='manga-cover'
                 src={additionalInfo?.coverArtUrl}
                 alt={manga?.attributes.title.en}
               />
@@ -105,7 +109,7 @@ export function MangaPage() {
                 return (
                   <a key={chapter.id} className='chapter-list__item'>
                     <h2>
-                      {chapter.attributes.title || chapter.attributes.chapter}
+                      {chapter.attributes.title || 'Capítulo ' + chapter.attributes.chapter}
                     </h2>
                     <span>#{chapter.attributes.chapter}</span>
                   </a>

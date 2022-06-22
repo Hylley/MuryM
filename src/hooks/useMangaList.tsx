@@ -37,7 +37,7 @@ export function useMangaList() {
 
   useIonViewWillEnter(() => {
     api
-      .get<MangaResponse>('/manga?includes[]=cover_art', {
+      .get<MangaResponse>('/manga?includes[]=cover_art&&availableTranslatedLanguage[]=pt-br', {
         params: {
           offset: offset.current,
           limit: LIMIT,

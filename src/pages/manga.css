@@ -77,3 +77,21 @@
   bottom: 0;
   right: 0;
 }
+
+.manga-cover {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.manga-cover-banner {
+  position: absolute;
+
+  filter: blur(4px) brightness(50%) grayscale(1);
+
+  top: 0px;
+  left: 0px;
+  min-width: 100%;
+  object-fit: cover;
+  height: 30%;
+}
