@@ -4,7 +4,6 @@ import {
   IonTabBar,
   IonTabButton,
   IonIcon,
-  IonLabel,
   IonPage,
   IonContent,
 } from '@ionic/react'

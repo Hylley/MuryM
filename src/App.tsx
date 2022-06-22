@@ -20,6 +20,7 @@ import { HomePage } from './pages'
 import { Header } from './components/Header'
 import { Tabs } from './components/Tabs'
 import { MangaPage } from './pages/manga'
+import { ReaderPage } from './pages/reader'
 
 setupIonicReact()
 
@@ -32,6 +33,7 @@ const App: React.FC = () => {
           <Tabs>
             <Route path='/' component={HomePage} />
             <Route path='/m/:mangaId' component={MangaPage} />
+            <Route path='/r/:chapterId' component={ReaderPage} />
           </Tabs>
         </IonReactRouter>
       </IonContent>

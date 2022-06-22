@@ -32,3 +32,15 @@ export interface Relationship {
   id: string
   type: string
 }
+
+export interface ChapterPagesResponse {
+  result: string
+  baseUrl: string
+  chapter: ChapterPages
+}
+
+export interface ChapterPages {
+  hash: string
+  data: string[]
+  dataSaver: string[]
+}

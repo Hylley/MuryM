@@ -4,6 +4,7 @@ import {
   IonPage,
   IonSpinner,
   useIonViewWillEnter,
+  IonRouterLink,
 } from '@ionic/react'
 import { useState } from 'react'
 import { useParams } from 'react-router'
@@ -74,11 +75,13 @@ export function MangaPage() {
         {manga?.attributes.title.en ? (
           <div className='manga-page'>
             <header className='manga-page__header'>
-              <img className = 'manga-cover-banner'
+              <img
+                className='manga-cover-banner'
                 src={additionalInfo?.coverArtUrl}
                 alt={manga?.attributes.title.en}
               />
-              <img className='manga-cover'
+              <img
+                className='manga-cover'
                 src={additionalInfo?.coverArtUrl}
                 alt={manga?.attributes.title.en}
               />
@@ -107,12 +110,19 @@ export function MangaPage() {
             <IonList className='chapter-list'>
               {chapterList?.map(chapter => {
                 return (
-                  <a key={chapter.id} className='chapter-list__item'>
-                    <h2>
-                      {chapter.attributes.title || 'Capítulo ' + chapter.attributes.chapter}
-                    </h2>
-                    <span>#{chapter.attributes.chapter}</span>
-                  </a>
+                  <IonRouterLink
+                    key={chapter.id}
+                    className=''
+                    routerLink={`/r/${chapter.id}`}
+                  >
+                    <div className='chapter-list__item'>
+                      <h2>
+                        {chapter.attributes.title ||
+                          'Capítulo ' + chapter.attributes.chapter}
+                      </h2>
+                      <span>#{chapter.attributes.chapter}</span>
+                    </div>
+                  </IonRouterLink>
                 )
               })}
             </IonList>

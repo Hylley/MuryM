@@ -1,0 +1,18 @@
+.page-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-list img {
+  margin-top: 0.5rem;
+}
+
+.page-list footer {
+  margin-block: 1rem;
+}
+
+.page-list footer button {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
